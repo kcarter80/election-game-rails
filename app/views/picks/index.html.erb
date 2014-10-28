@@ -1,5 +1,21 @@
 <h1>Election Pool 2014</h1>
 
-<p>A paragraph</p>
+<h2>Govenor Races</h2>
 
-<%= @governor_races.response.response_body.inspect %>
+<ul>
+	<% @governor_races.each do |race| %>
+	    <li>
+	        <%= race %>
+	    </li>
+	<% end %>
+</ul>
+
+<h2>Senate Races</h2>
+
+<ul>
+	<% @senate_races.each do |race| %>
+	    <li>
+	        <%= race %>
+	    </li>
+	<% end %>
+</ul>
