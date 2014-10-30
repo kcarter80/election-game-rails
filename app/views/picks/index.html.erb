@@ -1,21 +1,43 @@
+<p id="notice"></p>
+
 <h1>Election Pool 2014</h1>
+
+<p>
+	<label for="email">Email:</label>
+	<input type="text" id="email" name="email" />
+</p>
+
+<p>
+	<label for="password">Password:</label>
+	<input type="password" id="password" name="password" />
+	WARNING: These passwords will be visible to Mark. Do NOT use a common password!
+</p>
+
+<p>
+	<input type="button" id="retrieve" value="Retrieve Picks" />
+	<input type="button" id="submit" value="Submit Picks" />
+</p>
 
 <h2>Govenor Races</h2>
 
-<ul>
-	<% @governor_races.each do |race| %>
+<ul id="governor">
+	<% @governor_races.each do |key,race| %>
 	    <li>
+	        <input type="radio" name="<%= key %>" value="under" />
 	        <%= race %>
+	        <input type="radio" name="<%= key %>" value="over" />
 	    </li>
 	<% end %>
 </ul>
 
 <h2>Senate Races</h2>
 
-<ul>
-	<% @senate_races.each do |race| %>
+<ul id="senate">
+	<% @senate_races.each do |key,race| %>
 	    <li>
+	        <input type="radio" name="<%= key %>" value="under" />
 	        <%= race %>
+	        <input type="radio" name="<%= key %>" value="over" />
 	    </li>
 	<% end %>
 </ul>
