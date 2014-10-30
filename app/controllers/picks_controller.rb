@@ -33,9 +33,10 @@ class PicksController < ApplicationController
 			if (params[:email] == value["email"])
 				found = true
 				#email and password match
-				if (params[:password] == value[:password])
-					#TODO: remove previous!
-					@firebase.push("/picks", Hash["email",params[:email],"password",params[:password], "governor_picks", params[:governor_picks], "senate_picks", params[:senate_picks]])
+				if (params[:password] == value["password"])
+					puts key
+					#TODO: update previous!
+					@firebase.update("/picks/" + key, Hash["governor_picks", params[:governor_picks], "senate_picks", params[:senate_picks]])
 				# email match, but password mismatch
 				else
 					render json: {message: "Incorrect password."} and return

@@ -23,9 +23,9 @@
 <ul id="governor">
 	<% @governor_races.each do |key,race| %>
 	    <li>
-	        <input type="radio" name="<%= key %>" value="under" />
-	        <%= race %>
 	        <input type="radio" name="<%= key %>" value="over" />
+	        <%= race %>
+	        <input type="radio" name="<%= key %>" value="under" />
 	    </li>
 	<% end %>
 </ul>
@@ -35,9 +35,9 @@
 <ul id="senate">
 	<% @senate_races.each do |key,race| %>
 	    <li>
-	        <input type="radio" name="<%= key %>" value="under" />
-	        <%= race %>
 	        <input type="radio" name="<%= key %>" value="over" />
+	        <%= race %>
+	        <input type="radio" name="<%= key %>" value="under" />
 	    </li>
 	<% end %>
 </ul>
