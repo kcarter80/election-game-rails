@@ -41,7 +41,7 @@ $( document ).ready(function() {
 				senate_picks: senate_picks
 			}
 		}).done(function(data) {
-			$( "#notice" ).append( data.message );
+			$( "#notice" ).html( data.message ).show().delay(2000).fadeOut(1000);
 		});	
 	});
 
@@ -55,12 +55,14 @@ $( document ).ready(function() {
 			}
 		}).done(function(data) {
 			$( "#notice" ).html( data.message ).show().delay(2000).fadeOut(1000);
-			$.each(data.entry.governor_picks, function(i,val) {
-				$("#governor li input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
-			});
-			$.each(data.entry.senate_picks, function(i,val) {
-				$("#senate li input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
-			});
+			if (!data.message) {
+				$.each(data.entry.governor_picks, function(i,val) {
+					$("#governor li input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
+				});
+				$.each(data.entry.senate_picks, function(i,val) {
+					$("#senate li input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
+				});
+			}
 		});	
 	});
 });

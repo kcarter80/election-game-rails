@@ -51,7 +51,7 @@ class PicksController < ApplicationController
 			@firebase.push("/picks", Hash["email",params[:email],"password",params[:password], "governor_picks", params[:governor_picks], "senate_picks", params[:senate_picks]])
 		end
 
-  	render nothing: true
+  	render json: {message: "Picks submitted."}
   end
 
   def get_races
