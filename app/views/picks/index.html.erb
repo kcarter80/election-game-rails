@@ -38,13 +38,13 @@ Rules: For those unfamiliar with point spreads, for each pick all you need to do
 		<% @governor_races.each do |key,race| %>
 			<tr class="<%= cycle('odd', 'even') -%>">
 				<td>
-	        		<input type="radio" name="<%= key %>" value="over" />
+	        		<input type="radio" name="g_<%= key %>" value="over" />
 	        	</td>
 	        	<td>
 	        		<%= race %>
 	        	</td>
 	        	<td>
-	        		<input type="radio" name="<%= key %>" value="under" />
+	        		<input type="radio" name="g_<%= key %>" value="under" />
 	        	</td>
     		</tr>
 		<% end %>
@@ -65,13 +65,13 @@ Rules: For those unfamiliar with point spreads, for each pick all you need to do
 		<% @senate_races.each do |key,race| %>
 			<tr class="<%= cycle('odd', 'even') -%>">
 				<td>
-	        		<input type="radio" name="<%= key %>" value="over" />
+	        		<input type="radio" name="s_<%= key %>" value="over" />
 	        	</td>
 	        	<td>
 	        		<%= race %>
 	        	</td>
 	        	<td>
-	        		<input type="radio" name="<%= key %>" value="under" />
+	        		<input type="radio" name="s_<%= key %>" value="under" />
 	        	</td>
     		</tr>
 		<% end %>

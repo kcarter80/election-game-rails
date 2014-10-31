@@ -59,11 +59,15 @@ $( document ).ready(function() {
 				if (data.entry.governor_picks) {
 					$.each(data.entry.governor_picks, function(i,val) {
 						$("#governor td input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
+						// stupid bug fix for when i messed up the names and people had already submitted data
+						$("#governor td input[name=g_" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
 					});
 				}
 				if (data.entry.senate_picks) {
 					$.each(data.entry.senate_picks, function(i,val) {
 						$("#senate td input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
+						// stupid bug fix for when i messed up the names and people had already submitted data
+						$("#senate td input[name=s_" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
 					});
 				}
 			}
