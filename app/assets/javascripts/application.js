@@ -20,12 +20,12 @@ $( document ).ready(function() {
 	$( "#submit" ).on( "click", function() {
 		var governor_picks = [];
 		var senate_picks = [];
-		$.each($('#governor li input'), function(i,val) {
+		$.each($('#governor td input'), function(i,val) {
 			if (val.checked) {
 				governor_picks.push([val.name,val.value]);
 			}
 		});
-		$.each($('#senate li input'), function(i,val) {
+		$.each($('#senate td input'), function(i,val) {
 			if (val.checked) {
 				senate_picks.push([val.name,val.value]);
 			}
@@ -55,13 +55,17 @@ $( document ).ready(function() {
 			}
 		}).done(function(data) {
 			$( "#notice" ).html( data.message ).show().delay(2000).fadeOut(1000);
-			if (!data.message) {
-				$.each(data.entry.governor_picks, function(i,val) {
-					$("#governor li input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
-				});
-				$.each(data.entry.senate_picks, function(i,val) {
-					$("#senate li input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
-				});
+			if (data.entry.governor_picks || data.entry.senate_picks) {
+				if (data.entry.governor_picks) {
+					$.each(data.entry.governor_picks, function(i,val) {
+						$("#governor td input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
+					});
+				}
+				if (data.entry.senate_picks) {
+					$.each(data.entry.senate_picks, function(i,val) {
+						$("#senate td input[name=" + val[0] + "][value=" + val[1] + "]").prop('checked', true);
+					});
+				}
 			}
 		});	
 	});

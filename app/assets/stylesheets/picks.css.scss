@@ -6,9 +6,16 @@ body {
 	margin: 0;
 }
 
-li {
-	list-style: none;
-	margin-bottom: 20px;
+#governor, #senate {
+	tr {
+		text-align: center;
+		&.odd {
+			background-color: #ddd;
+		}
+	}
+	td {
+		padding: 5px;
+	}
 }
 
 #notice {

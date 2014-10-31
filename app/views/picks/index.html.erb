@@ -16,7 +16,7 @@ Rules: For those unfamiliar with point spreads, for each pick all you need to do
 <p>
 	<label for="password">Password:</label>
 	<input type="password" id="password" name="password" />
-	WARNING: These passwords will be visible to Mark. Do NOT use a common password!
+	NOTE: Please use a common password, such as your first name and a random number.
 </p>
 
 <p>
@@ -26,24 +26,54 @@ Rules: For those unfamiliar with point spreads, for each pick all you need to do
 
 <h2>Govenor Races</h2>
 
-<ul id="governor">
-	<% @governor_races.each do |key,race| %>
-	    <li>
-	        <input type="radio" name="<%= key %>" value="over" />
-	        <%= race %>
-	        <input type="radio" name="<%= key %>" value="under" />
-	    </li>
-	<% end %>
-</ul>
+<table id="governor">
+	<thead>
+		<tr>
+			<th>Over</th>
+			<th>Race</th>
+			<th>Under</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @governor_races.each do |key,race| %>
+			<tr class="<%= cycle('odd', 'even') -%>">
+				<td>
+	        		<input type="radio" name="<%= key %>" value="over" />
+	        	</td>
+	        	<td>
+	        		<%= race %>
+	        	</td>
+	        	<td>
+	        		<input type="radio" name="<%= key %>" value="under" />
+	        	</td>
+    		</tr>
+		<% end %>
+	</tbody>
+</table>
 
 <h2>Senate Races</h2>
 
-<ul id="senate">
-	<% @senate_races.each do |key,race| %>
-	    <li>
-	        <input type="radio" name="<%= key %>" value="over" />
-	        <%= race %>
-	        <input type="radio" name="<%= key %>" value="under" />
-	    </li>
-	<% end %>
-</ul>
+<table id="senate">
+	<thead>
+		<tr>
+			<th>Over</th>
+			<th>Race</th>
+			<th>Under</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @senate_races.each do |key,race| %>
+			<tr class="<%= cycle('odd', 'even') -%>">
+				<td>
+	        		<input type="radio" name="<%= key %>" value="over" />
+	        	</td>
+	        	<td>
+	        		<%= race %>
+	        	</td>
+	        	<td>
+	        		<input type="radio" name="<%= key %>" value="under" />
+	        	</td>
+    		</tr>
+		<% end %>
+	</tbody>
+</table>
