@@ -77,4 +77,56 @@ class PicksController < ApplicationController
 		# email not found
 		render json: {message: "No picks found for email."} and return
   end
+
+  def generate_results
+
+	require 'csv'
+
+	@firebase = Firebase::Client.new("https://popping-inferno-3695.firebaseio.com")
+
+	results = JSON.parse @firebase.get("", { }).response.response_body
+
+	governor_race_id_strings = []
+	senate_race_id_strings = []
+
+	CSV.open('results.csv','w') do |csv|
+		header = ['email']
+		results['governor'].each do |key, value|
+			header << value
+			governor_race_id_strings << 'g_' + key
+		end
+		results['senate'].each do |key, value|
+			header << value
+			senate_race_id_strings << 's_' + key
+		end
+		csv << header
+
+
+		results['picks'].each do |key,value|
+			selections = [value['email']]
+
+			governor_picks = Hash[value['governor_picks'].map {|k,v| [k,v]}]
+			senate_picks = Hash[value['senate_picks'].map {|k,v| [k,v]}]
+
+			governor_race_id_strings.each do |race_id|
+				if governor_picks.has_key?(race_id)
+					selections << governor_picks[race_id]
+				else
+					selections << '-'
+				end
+			end
+
+			senate_race_id_strings.each do |race_id|
+				if senate_picks.has_key?(race_id)
+					selections << senate_picks[race_id]
+				else
+					selections << '-'
+				end
+			end
+
+			csv << selections
+		end
+	end
+
+  end
 end
